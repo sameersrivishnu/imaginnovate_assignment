@@ -1,0 +1,71 @@
+<div class="container text-center">
+
+    <div class="row">
+	  <div class="col-sm-4">
+	  	<h2>Weather in your city</h2>
+	  </div>
+	  <div class="col-sm-4">
+	    <input type="search" id="search_city" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+	  </div>  	
+	  <div class="col-sm-2">
+	    <button type="button" class="btn btn-warning" onclick="search_city();">Search</button>
+	  </div>
+	  <div id="loader" class="col-sm-1" style="display: none; padding: 0; margin: 0;">
+	  	<img src="/loader1.gif" style="width: 40px;">
+	  </div>
+    </div>
+    <div class="row display-data" id="search_data">
+    	<%if @data.present?%>
+	    <% @data.try(:each) do |res|%>	
+           <%value = res[1].to_a[0]%>
+		  <div class="col-sm-2">
+			<table>
+				<tr>
+				   <td  colspan="2" class="header"> Date: <%= value["dt"].strftime("%d/%m/%Y")%></td>
+			    </tr>
+				<tr>
+				   <td  colspan="2" class="headings"> Temperature</td>
+			    </tr>    
+			  <tr>
+			    <td class="headings">Min</td>
+			    <td class="headings">Max</td>
+			  </tr>
+			  <tr>
+			    <td><%= value["main"]["temp_min"]%></td>
+			    <td><%= value["main"]["temp_max"]%></td>
+			  </tr>
+			  <tr>
+			    <td>Pressure</td>
+			    <td><%= value["main"]["pressure"]%></td>
+			  </tr>
+			  <tr>
+			    <td>Humidity</td>
+			    <td><%= value["main"]["humidity"]%></td>
+			  </tr>  
+			</table>
+		  </div>
+		<%end%>
+		<%else%>
+		<p><%= @message %></p>
+		<%end%>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+function search_city(){
+	$("#loader").show();
+	var city = document.getElementById("search_city").value;
+	$.ajax({
+		url: "/weathers/index",
+		type: "GET",
+		data: {city: city},
+		success: function(res){
+			$("#loader").hide();
+			$("#search_data").html(res);
+		}
+	})
+}
+</script>

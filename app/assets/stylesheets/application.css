@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+    h2{
+        color: orange;
+    }
+   .container{
+     margin-top: 5%;
+   }    
+input[type=search] {
+  width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border: 3px solid grey;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+input[type=search]:focus {
+  border: 3px solid orange;
+}   
+.btn-warning{
+  color: white;
+}
+.display-data{
+    margin-top: 5%;
+}
+
+table, td, th{  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10%;
+}
+
+th, td {
+  padding: 15px;
+}
+.header{
+    background: orange;
+}
+.headings{
+    background: grey;
+}
+td{
+    text-align: center;
+}
